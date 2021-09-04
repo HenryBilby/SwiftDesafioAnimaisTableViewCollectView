@@ -1,0 +1,22 @@
+//
+//  Animal.swift
+//  Vertebrados
+//
+//  Created by Henry Bilby on 04/09/21.
+//
+
+import Foundation
+
+class Animal {
+    let tipo: Tipo
+    let nome: String
+    let imagem: String
+    let curiosidade: String
+        
+    init(tipo: Tipo, nome: String, imagem: String, curiosidade: String) {
+        self.tipo = tipo
+        self.nome = nome
+        self.imagem = imagem
+        self.curiosidade = curiosidade
+    }
+}

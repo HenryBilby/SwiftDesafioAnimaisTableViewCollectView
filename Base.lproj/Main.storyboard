@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pkS-M1-Hci">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Segunda Tela View Controller-->
+        <scene sceneID="Crr-Mb-Tdw">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="HYn-Ne-pcX" customClass="SegundaTelaViewController" customModule="Vertebrados" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EnQ-zI-Psd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TQ5-t2-1qp">
+                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="edb-c4-6EU">
+                                    <size key="itemSize" width="186" height="268"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalCollectionViewCell" id="riD-Lm-agd" customClass="AnimalCollectionViewCell" customModule="Vertebrados" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="186" height="268"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DRi-iF-OqY">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="268"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="flp-Rk-qam">
+                                                    <rect key="frame" x="0.0" y="0.0" width="186" height="218"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-1u-p2v">
+                                                    <rect key="frame" x="0.0" y="218" width="186" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Ary-bO-8Of"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="eBo-1u-p2v" secondAttribute="bottom" id="CSJ-Ct-ve0"/>
+                                                <constraint firstItem="eBo-1u-p2v" firstAttribute="top" secondItem="flp-Rk-qam" secondAttribute="bottom" id="J1K-js-ZN1"/>
+                                                <constraint firstAttribute="trailing" secondItem="flp-Rk-qam" secondAttribute="trailing" id="Jvl-9h-dck"/>
+                                                <constraint firstItem="flp-Rk-qam" firstAttribute="leading" secondItem="DRi-iF-OqY" secondAttribute="leading" id="Kss-xf-QOp"/>
+                                                <constraint firstItem="flp-Rk-qam" firstAttribute="top" secondItem="DRi-iF-OqY" secondAttribute="top" id="MDZ-jr-9tt"/>
+                                                <constraint firstItem="eBo-1u-p2v" firstAttribute="leading" secondItem="DRi-iF-OqY" secondAttribute="leading" id="NYG-Bi-N8Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="eBo-1u-p2v" secondAttribute="trailing" id="olq-8L-WH7"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="186" height="268"/>
+                                        <connections>
+                                            <outlet property="imagemView" destination="flp-Rk-qam" id="ZM0-B3-RMz"/>
+                                            <outlet property="nomeLabel" destination="eBo-1u-p2v" id="PwE-uy-eqJ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-Oq-oaA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vB7-aV-6m1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8bC-Bu-nkK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TQ5-t2-1qp" firstAttribute="leading" secondItem="8bC-Bu-nkK" secondAttribute="leading" id="3oF-y8-hmd"/>
+                            <constraint firstItem="5G7-Oq-oaA" firstAttribute="top" secondItem="8bC-Bu-nkK" secondAttribute="top" id="PMf-8z-5nc"/>
+                            <constraint firstItem="5G7-Oq-oaA" firstAttribute="leading" secondItem="8bC-Bu-nkK" secondAttribute="leading" id="dok-ib-zRs"/>
+                            <constraint firstItem="TQ5-t2-1qp" firstAttribute="top" secondItem="5G7-Oq-oaA" secondAttribute="bottom" id="kPH-Dc-led"/>
+                            <constraint firstItem="8bC-Bu-nkK" firstAttribute="trailing" secondItem="5G7-Oq-oaA" secondAttribute="trailing" id="oh3-QD-o7h"/>
+                            <constraint firstItem="8bC-Bu-nkK" firstAttribute="trailing" secondItem="TQ5-t2-1qp" secondAttribute="trailing" id="t5j-at-Bls"/>
+                            <constraint firstItem="8bC-Bu-nkK" firstAttribute="bottom" secondItem="TQ5-t2-1qp" secondAttribute="bottom" id="y1v-tQ-tYQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AKD-V7-uk0"/>
+                    <connections>
+                        <outlet property="animaisCollectionView" destination="TQ5-t2-1qp" id="brz-C6-LxH"/>
+                        <outlet property="classeLabelTopo" destination="5G7-Oq-oaA" id="1Zt-to-xJ7"/>
+                        <segue destination="VLF-cC-uHI" kind="presentation" identifier="detalheAnimalSegue" id="ukL-va-UfO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxa-xu-PTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.68115942029" y="118.52678571428571"/>
+        </scene>
+        <!--Terceira Tela View Controller-->
+        <scene sceneID="ZBw-VG-gKY">
+            <objects>
+                <viewController id="VLF-cC-uHI" customClass="TerceiraTelaViewController" customModule="Vertebrados" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zg8-oE-ewN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Mac-IK-h4I"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBa-hh-3yh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Vertebrados" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Atx-h6-pfQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClasseAnimalTableViewCell" id="KX0-ny-HCW" customClass="ClasseAnimalTableViewCell" customModule="Vertebrados" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KX0-ny-HCW" id="YEe-uW-6ZP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HYn-Ne-pcX" kind="show" identifier="detalheClasseSegue" id="rzy-lv-fVo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Atx-h6-pfQ" secondAttribute="bottom" id="4Ml-Ai-94W"/>
+                            <constraint firstItem="Atx-h6-pfQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DWk-wD-M6e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Atx-h6-pfQ" secondAttribute="trailing" id="TFh-e7-QeH"/>
+                            <constraint firstItem="Atx-h6-pfQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p3t-JE-EUl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tmk-WW-MYM"/>
+                    <connections>
+                        <outlet property="vertebradosTableView" destination="Atx-h6-pfQ" id="Y6u-Ni-kcV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="118.52678571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Cv-Yb-d2S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pkS-M1-Hci" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pGm-fj-EC8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="r2V-Mx-I6n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S3k-Xc-705" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
