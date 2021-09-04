@@ -9,21 +9,28 @@ import UIKit
 
 class TerceiraTelaViewController: UIViewController {
 
+    var animal = Animal(tipo: .aves, nome: "", imagem: "", curiosidade: "")
+    
+    @IBOutlet weak var labelTopoTitulo : UILabel!
+    
+    @IBOutlet weak var imageView : UIImageView!
+    
+    @IBOutlet weak var labelCuriosidade : UILabel!
+    
+    @IBOutlet weak var botaoVoltar : UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        labelTopoTitulo.text = animal.nome
+        labelCuriosidade.text = animal.curiosidade
+        imageView.image = UIImage(named: animal.imagem)
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func actionBotaoVoltar(_ sender: Any) {
+        print("actionBotaoVoltar")
     }
-    */
 
 }

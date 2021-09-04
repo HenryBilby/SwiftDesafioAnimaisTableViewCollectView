@@ -74,7 +74,7 @@ class SegundaTelaViewController: UIViewController {
             let animal = Animal(tipo: self.tipoAnimal,
                                 nome: "\(tipo) \(n)",
                                 imagem: imagem,
-                                curiosidade: "Este animal é encontrado somente no país \(getPaisAleatorio()) na estação  \(getEstacaoAleatoria()).")
+                                curiosidade: "\(tipo) encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")
             animaisPorTipo.append(animal)
         }
         
@@ -97,7 +97,7 @@ class SegundaTelaViewController: UIViewController {
     }
     
     private func getEstacaoAleatoria() -> String {
-        let estacoes = ["Verao", "Primavera", "Outono", "Inverno"]
+        let estacoes = ["Verão", "Primavera", "Outono", "Inverno"]
         let number = Int(arc4random_uniform(UInt32(estacoes.count)))
         return estacoes[number]
     }
@@ -120,7 +120,13 @@ extension SegundaTelaViewController: UICollectionViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        <#code#>
+        if segue.identifier == "detalheAnimalSegue" {
+            if let terceiraTelaViewController = segue.destination as? TerceiraTelaViewController {
+                if let cell = sender as? AnimalCollectionViewCell {
+                    terceiraTelaViewController.animal = cell.animal
+                }
+            }
+        }
     }
     
 }
