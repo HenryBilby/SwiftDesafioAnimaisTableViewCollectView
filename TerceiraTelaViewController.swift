@@ -30,7 +30,7 @@ class TerceiraTelaViewController: UIViewController {
     }
     
     @IBAction func actionBotaoVoltar(_ sender: Any) {
-        print("actionBotaoVoltar")
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
