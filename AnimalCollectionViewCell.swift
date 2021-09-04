@@ -2,7 +2,7 @@
 //  AnimalCollectionViewCell.swift
 //  Vertebrados
 //
-//  Created by Henry Bilby on 04/09/21.
+//  Created by Fred Nobre, Guilherme Feitosa, Lilian Garcia, Lucas Tamagnone e Henry Bilby on 04/09/21.
 //
 
 import UIKit

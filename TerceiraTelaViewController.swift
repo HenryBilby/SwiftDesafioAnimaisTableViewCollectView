@@ -2,7 +2,7 @@
 //  TerceiraTelaViewController.swift
 //  Vertebrados
 //
-//  Created by Fred Nobre on 03/09/21.
+//  Created by Fred Nobre, Guilherme Feitosa, Lilian Garcia, Lucas Tamagnone e Henry Bilby on 03/09/21.
 //
 
 import UIKit
