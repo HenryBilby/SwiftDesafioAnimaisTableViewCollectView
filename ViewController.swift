@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         vertebradosTableView.dataSource = self
         vertebradosTableView.delegate = self
+        self.navigationItem.title = "Animais Vertebrados"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
     }
 }
 

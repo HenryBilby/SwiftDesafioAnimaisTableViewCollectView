@@ -180,14 +180,39 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClasseAnimalTableViewCell" id="KX0-ny-HCW" customClass="ClasseAnimalTableViewCell" customModule="Vertebrados" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClasseAnimalTableViewCell" rowHeight="100" id="KX0-ny-HCW" customClass="ClasseAnimalTableViewCell" customModule="Vertebrados" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KX0-ny-HCW" id="YEe-uW-6ZP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="19k-By-qe1">
+                                                    <rect key="frame" x="10" y="10" width="120" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="eKG-Ub-ZWx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0x-NN-JJr">
+                                                    <rect key="frame" x="140" y="16" width="249" height="68"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="d0x-NN-JJr" secondAttribute="trailing" constant="5" id="70W-8s-Efc"/>
+                                                <constraint firstAttribute="bottom" secondItem="19k-By-qe1" secondAttribute="bottom" constant="10" id="KUZ-wK-tbY"/>
+                                                <constraint firstItem="d0x-NN-JJr" firstAttribute="leading" secondItem="19k-By-qe1" secondAttribute="trailing" constant="10" id="M86-A7-Mgf"/>
+                                                <constraint firstItem="d0x-NN-JJr" firstAttribute="top" secondItem="YEe-uW-6ZP" secondAttribute="topMargin" constant="5" id="RDV-jD-3y6"/>
+                                                <constraint firstItem="19k-By-qe1" firstAttribute="top" secondItem="YEe-uW-6ZP" secondAttribute="top" constant="10" id="ggE-9E-8Jd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="d0x-NN-JJr" secondAttribute="bottom" constant="5" id="msT-EA-T4q"/>
+                                                <constraint firstItem="19k-By-qe1" firstAttribute="leading" secondItem="YEe-uW-6ZP" secondAttribute="leading" constant="10" id="uRQ-Lz-eXz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="classeAnimalImageView" destination="19k-By-qe1" id="aWh-l0-1Aj"/>
+                                            <outlet property="classeAnimalLabel" destination="d0x-NN-JJr" id="4NG-LX-xqi"/>
                                             <segue destination="HYn-Ne-pcX" kind="show" identifier="detalheClasseSegue" id="rzy-lv-fVo"/>
                                         </connections>
                                     </tableViewCell>
@@ -220,8 +245,16 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pGm-fj-EC8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <color key="textColor" systemColor="systemGreenColor"/>
+                            <color key="textShadowColor" systemColor="opaqueSeparatorColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fuD-Ie-ROM">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="r2V-Mx-I6n"/>
                     </connections>
@@ -232,8 +265,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -11,29 +11,32 @@ class ClasseAnimalTableViewCell: UITableViewCell {
     
     var tipoAnimal : Tipo = .aves
     
+    @IBOutlet weak var classeAnimalImageView : UIImageView!
+    @IBOutlet weak var classeAnimalLabel : UILabel!
+    
     public func configure (classeAnimal : ClasseAnimal) {
         tipoAnimal = classeAnimal.tipo
 
-        self.imageView?.image = UIImage(named: classeAnimal.imagem)
+        classeAnimalImageView.image = UIImage(named: classeAnimal.imagem)
 
         switch classeAnimal.tipo {
             case .peixes:
-                self.textLabel?.text = "Peixes"
-                self.textLabel?.textColor = UIColor.blue
+                classeAnimalLabel.text = "Peixes"
+                classeAnimalLabel.textColor = UIColor.blue
             case .anfibios:
-                self.textLabel?.text = "Anfibios"
-                self.textLabel?.textColor = UIColor.green
+                classeAnimalLabel.text = "Anfibios"
+                classeAnimalLabel.textColor = UIColor.green
             case .repteis:
-                self.textLabel?.text = "Répteis"
-                self.textLabel?.textColor = UIColor.brown
+                classeAnimalLabel.text = "Répteis"
+                classeAnimalLabel.textColor = UIColor.brown
             case .aves:
-                self.textLabel?.text = "Aves"
-                self.textLabel?.textColor = UIColor.orange
+                classeAnimalLabel.text = "Aves"
+                classeAnimalLabel.textColor = UIColor.orange
             case .mamiferos:
-                self.textLabel?.text = "Mamíferos"
-                self.textLabel?.textColor = UIColor.red
+                classeAnimalLabel.text = "Mamíferos"
+                classeAnimalLabel.textColor = UIColor.red
         }
-        self.textLabel?.font = textLabel?.font.withSize(30)
+//        classeAnimalLabel.font = classeAnimalLabel.font.withSize(30)
     }
 
     override func awakeFromNib() {
