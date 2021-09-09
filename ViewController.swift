@@ -20,26 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vertebradosTableView.dataSource = self
-    }
-    
-}
-
-extension ViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classeAnimais.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ClasseAnimalTableViewCell", for: indexPath) as? ClasseAnimalTableViewCell{
-
-            cell.configure(classeAnimal: classeAnimais[indexPath.row])
-            
-            return cell
-        }
-        
-        return UITableViewCell()
-        
+        vertebradosTableView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,5 +31,29 @@ extension ViewController: UITableViewDataSource{
                 }
             }
         }
+    }
+    
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+}
+
+extension ViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return classeAnimais.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ClasseAnimalTableViewCell", for: indexPath) as? ClasseAnimalTableViewCell{
+            cell.configure(classeAnimal: classeAnimais[indexPath.row])
+            return cell
+        }
+        
+        return UITableViewCell()
+        
     }
 }
