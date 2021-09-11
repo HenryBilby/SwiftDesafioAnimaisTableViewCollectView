@@ -7,16 +7,11 @@
 
 import Foundation
 
-class Animal {
-    let tipo: Tipo
-    let nome: String
-    let imagem: String
+class Animal : ClasseAnimal {
     let curiosidade: String
         
-    init(tipo: Tipo, nome: String, imagem: String, curiosidade: String) {
-        self.tipo = tipo
-        self.nome = nome
-        self.imagem = imagem
+    init(nome: String, imagem: String, curiosidade: String) {
         self.curiosidade = curiosidade
+        super.init(name: nome, imagem: imagem)
     }
 }

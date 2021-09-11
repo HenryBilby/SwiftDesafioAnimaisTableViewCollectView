@@ -9,7 +9,7 @@ import UIKit
 
 class SegundaTelaViewController: UIViewController {
     
-    var tipoAnimal : Tipo = .aves
+    var classAnimalName : String?
     var animais : [Animal] = []
     
     @IBOutlet weak var classeLabelTopo: UILabel!
@@ -19,6 +19,7 @@ class SegundaTelaViewController: UIViewController {
         super.viewDidLoad()
         
         animaisCollectionView.dataSource = self
+        animaisCollectionView.delegate = self
         
         setCaracteristicasLabelTopo()
         setAnimaisPorTipo()
@@ -27,116 +28,117 @@ class SegundaTelaViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detalheAnimalSegue" {
             if let terceiraTelaViewController = segue.destination as? TerceiraTelaViewController {
-                if let cell = sender as? AnimalCollectionViewCell {
-                    terceiraTelaViewController.animal = cell.animal
+                if let animal = sender as? Animal {
+                    terceiraTelaViewController.animal = animal
                 }
             }
         }
     }
 
     private func setCaracteristicasLabelTopo(){
-        switch self.tipoAnimal {
-            case .peixes:
-                classeLabelTopo.text = "Peixes"
+        classeLabelTopo.text = self.classAnimalName
+        
+        switch self.classAnimalName {
+            case "Peixes":
                 classeLabelTopo.textColor = UIColor.blue
-            case .anfibios:
-                classeLabelTopo.text = "Anfibios"
+            case "Anfibios":
                 classeLabelTopo.textColor = UIColor.green
-            case .repteis:
-                classeLabelTopo.text = "Répteis"
+            case "Répteis":
                 classeLabelTopo.textColor = UIColor.brown
-            case .aves:
-                classeLabelTopo.text = "Aves"
+            case "Aves":
                 classeLabelTopo.textColor = UIColor.orange
-            case .mamiferos:
-                classeLabelTopo.text = "Mamíferos"
+            case "Mamíferos":
                 classeLabelTopo.textColor = UIColor.red
+            default:
+                classeLabelTopo.textColor = UIColor.black
         }
     }
 
     private func setAnimaisPorTipo(){
-        switch self.tipoAnimal {
-            case .peixes:
+        switch self.classAnimalName {
+            case "Peixes":
                 setPeixesToAnimais()
-            case .anfibios:
+            case "Anfibios":
                 setAnfibiosToAnimais()
-            case .repteis:
+            case "Répteis":
                 setRepteisToAnimais()
-            case .aves:
+            case "Aves":
                 setAvesToAnimais()
-            case .mamiferos:
+            case "Mamíferos":
                 setMamiferosToAnimais()
+            default:
+                print("LOG - SegundaTelaViewController - setAnimaisPorTipo() - default case acessed")
         }
     }
 
     private func setPeixesToAnimais() {
         self.animais = [
-            Animal(tipo: .peixes, nome: "Peixe 1", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 2", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 3", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 4", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 5", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 6", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 7", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 8", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 9", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .peixes, nome: "Peixe 10", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
+            Animal(nome: "Peixe 1", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 2", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 3", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 4", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 5", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 6", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 7", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 8", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 9", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Peixe 10", imagem: "peixe.jpg", curiosidade: "Peixe encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
     }
 
     private func setAnfibiosToAnimais() {
         self.animais = [
-            Animal(tipo: .anfibios, nome: "Anfibio 1", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 2", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 3", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 4", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 5", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 6", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 7", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 8", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 9", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .anfibios, nome: "Anfibio 10", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
+            Animal(nome: "Anfibio 1", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 2", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 3", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 4", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 5", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 6", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 7", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 8", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 9", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Anfibio 10", imagem: "anfibio.jpg", curiosidade: "Anfibio encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
     }
 
     private func setRepteisToAnimais() {
         self.animais = [
-            Animal(tipo: .repteis, nome: "Réptil 1", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 2", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 3", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 4", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 5", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 6", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 7", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 8", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 9", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .repteis, nome: "Réptil 10", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
+            Animal( nome: "Réptil 1", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 2", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 3", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 4", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 5", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 6", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 7", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 8", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 9", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal( nome: "Réptil 10", imagem: "reptil.jpeg", curiosidade: "Réptil encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
     }
 
     private func setAvesToAnimais() {
         self.animais = [
-            Animal(tipo: .aves, nome: "Ave 1", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 2", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 3", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 4", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 5", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 6", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 7", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 8", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 9", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .aves, nome: "Ave 10", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
+            Animal(nome: "Ave 1", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 2", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 3", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 4", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 5", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 6", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 7", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 8", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 9", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Ave 10", imagem: "ave.jpg", curiosidade: "Ave encontrada somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria()).")]
     }
 
     private func setMamiferosToAnimais() {
         self.animais = [
-            Animal(tipo: .mamiferos, nome: "Mamifero 1", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 2", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 3", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 4", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 5", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 6", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 7", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 8", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 9", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
-            Animal(tipo: .mamiferos, nome: "Mamifero 10", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 1", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 2", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 3", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 4", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 5", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 6", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 7", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 8", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 9", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
+            Animal(nome: "Mamifero 10", imagem: "mamifero.jpeg", curiosidade: "Mamifero encontrado somente no país \(getPaisAleatorio()) na estação \(getEstacaoAleatoria())."),
         ]
     }
 
@@ -176,5 +178,12 @@ extension SegundaTelaViewController: UICollectionViewDataSource {
         }
         
         return UICollectionViewCell()
+    }
+}
+
+extension SegundaTelaViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //o performSegue faz um call interno para o método prepare()
+        performSegue(withIdentifier: "detalheAnimalSegue", sender: self.animais[indexPath.row])
     }
 }

@@ -61,7 +61,6 @@
                                         <connections>
                                             <outlet property="imagemView" destination="flp-Rk-qam" id="ZM0-B3-RMz"/>
                                             <outlet property="nomeLabel" destination="eBo-1u-p2v" id="PwE-uy-eqJ"/>
-                                            <segue destination="VLF-cC-uHI" kind="presentation" identifier="detalheAnimalSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="pmr-wo-7Nn"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -92,6 +91,7 @@
                     <connections>
                         <outlet property="animaisCollectionView" destination="TQ5-t2-1qp" id="brz-C6-LxH"/>
                         <outlet property="classeLabelTopo" destination="5G7-Oq-oaA" id="1Zt-to-xJ7"/>
+                        <segue destination="VLF-cC-uHI" kind="presentation" identifier="detalheAnimalSegue" modalPresentationStyle="fullScreen" id="N1C-Md-GXt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxa-xu-PTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

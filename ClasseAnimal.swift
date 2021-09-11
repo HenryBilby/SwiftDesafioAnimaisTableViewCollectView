@@ -7,20 +7,12 @@
 
 import Foundation
 
-enum Tipo {
-    case peixes
-    case anfibios
-    case repteis
-    case mamiferos
-    case aves
-}
-
 class ClasseAnimal {
-    let tipo: Tipo
+    let name: String
     let imagem: String
     
-    init(tipo: Tipo, imagem: String) {
-        self.tipo = tipo
+    init(name: String, imagem: String) {
+        self.name = name
         self.imagem = imagem
     }
 }

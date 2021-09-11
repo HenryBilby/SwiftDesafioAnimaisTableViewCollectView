@@ -11,11 +11,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var vertebradosTableView: UITableView!
     
-    var classeAnimais = [ClasseAnimal(tipo: .peixes, imagem: "peixe.jpg"),
-                         ClasseAnimal(tipo: .anfibios, imagem: "anfibio.jpg"),
-                         ClasseAnimal(tipo: .aves, imagem: "ave.jpg"),
-                         ClasseAnimal(tipo: .repteis, imagem: "reptil.jpeg"),
-                         ClasseAnimal(tipo: .mamiferos, imagem: "mamifero.jpeg")]
+    var classeAnimais = [ClasseAnimal(name: "Peixes", imagem: "peixe.jpg"),
+                         ClasseAnimal(name: "Anfibios", imagem: "anfibio.jpg"),
+                         ClasseAnimal(name: "Aves", imagem: "ave.jpg"),
+                         ClasseAnimal(name: "Répteis", imagem: "reptil.jpeg"),
+                         ClasseAnimal(name: "Mamíferos", imagem: "mamifero.jpeg")]
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         if segue.identifier == "detalheClasseSegue" {
             if let segundaTelaViewController = segue.destination as? SegundaTelaViewController {
                 if let cell = sender as? ClasseAnimalTableViewCell {
-                    segundaTelaViewController.tipoAnimal = cell.tipoAnimal
+                    segundaTelaViewController.classAnimalName = cell.classeAnimalLabel.text
                 }
             }
         }

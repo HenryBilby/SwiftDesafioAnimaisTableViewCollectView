@@ -9,45 +9,27 @@ import UIKit
 
 class ClasseAnimalTableViewCell: UITableViewCell {
     
-    var tipoAnimal : Tipo = .aves
-    
     @IBOutlet weak var classeAnimalImageView : UIImageView!
     @IBOutlet weak var classeAnimalLabel : UILabel!
     
     public func configure (classeAnimal : ClasseAnimal) {
-        tipoAnimal = classeAnimal.tipo
 
         classeAnimalImageView.image = UIImage(named: classeAnimal.imagem)
+        classeAnimalLabel.text = classeAnimal.name
 
-        switch classeAnimal.tipo {
-            case .peixes:
-                classeAnimalLabel.text = "Peixes"
+        switch classeAnimal.name {
+            case "Peixes":
                 classeAnimalLabel.textColor = UIColor.blue
-            case .anfibios:
-                classeAnimalLabel.text = "Anfibios"
+            case "Anfibios":
                 classeAnimalLabel.textColor = UIColor.green
-            case .repteis:
-                classeAnimalLabel.text = "Répteis"
+            case "Répteis":
                 classeAnimalLabel.textColor = UIColor.brown
-            case .aves:
-                classeAnimalLabel.text = "Aves"
+            case "Aves":
                 classeAnimalLabel.textColor = UIColor.orange
-            case .mamiferos:
-                classeAnimalLabel.text = "Mamíferos"
+            case "Mamíferos":
                 classeAnimalLabel.textColor = UIColor.red
+            default:
+                classeAnimalLabel.textColor = UIColor.black
         }
-//        classeAnimalLabel.font = classeAnimalLabel.font.withSize(30)
     }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class TerceiraTelaViewController: UIViewController {
 
-    var animal = Animal(tipo: .aves, nome: "", imagem: "", curiosidade: "")
+    var animal : Animal?
     
     @IBOutlet weak var labelTopoTitulo : UILabel!
     
@@ -21,10 +21,9 @@ class TerceiraTelaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        labelTopoTitulo.text = animal.nome
-        labelCuriosidade.text = animal.curiosidade
-        imageView.image = UIImage(named: animal.imagem)
+        labelTopoTitulo.text = animal?.name
+        labelCuriosidade.text = animal?.curiosidade
+        imageView.image = UIImage(named: animal?.imagem ?? "")
         
         // Do any additional setup after loading the view.
     }
